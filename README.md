@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/react-native-livephoto-kit.svg)](https://www.npmjs.com/package/react-native-livephoto-kit)
 [![npm downloads](https://img.shields.io/npm/dm/react-native-livephoto-kit.svg)](https://www.npmjs.com/package/react-native-livephoto-kit)
+[![CI](https://github.com/NarekChang/react-native-livephoto-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/NarekChang/react-native-livephoto-kit/actions/workflows/ci.yml)
 [![platform: iOS](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](#requirements)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
