@@ -2,12 +2,12 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-livephoto": ["./src/index"]
+      "react-native-livephoto-kit": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "customConditions": [
-      "react-native-livephoto-source",
+      "react-native-livephoto-kit-source",
       "react-native-strict-api"
     ],
     "esModuleInterop": true,

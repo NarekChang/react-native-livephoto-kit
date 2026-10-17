@@ -17,7 +17,7 @@ import {
   useGenerateLivePhoto,
   type LivePhotoFiles,
   type LivePhotoViewRef,
-} from 'react-native-livephoto';
+} from 'react-native-livephoto-kit';
 
 const describe = (error: unknown) =>
   error instanceof LivePhotoError

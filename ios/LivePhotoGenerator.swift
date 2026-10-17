@@ -254,7 +254,7 @@ enum LivePhotoGenerator {
     isCancelled: @escaping @Sendable () -> Bool,
     onSample: (@Sendable (CMTime) -> Void)?
   ) async {
-    let queue = DispatchQueue(label: "react-native-livephoto.writer.\(input.mediaType.rawValue)")
+    let queue = DispatchQueue(label: "react-native-livephoto-kit.writer.\(input.mediaType.rawValue)")
     await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
       input.requestMediaDataWhenReady(on: queue) {
         while input.isReadyForMoreMediaData {

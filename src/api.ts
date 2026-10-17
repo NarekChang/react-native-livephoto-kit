@@ -12,7 +12,7 @@ const unsupported = () =>
   Promise.reject(
     new LivePhotoError(
       'E_UNSUPPORTED',
-      "'react-native-livephoto' is only supported on iOS."
+      "'react-native-livephoto-kit' is only supported on iOS."
     )
   );
 

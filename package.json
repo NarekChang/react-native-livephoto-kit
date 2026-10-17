@@ -1,12 +1,12 @@
 {
-  "name": "react-native-livephoto",
+  "name": "react-native-livephoto-kit",
   "version": "0.1.0",
   "description": "Apple Live Photo view and utilities for React Native (iOS)",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "react-native-livephoto-source": "./src/index.tsx",
+      "react-native-livephoto-kit-source": "./src/index.tsx",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
@@ -142,7 +142,7 @@
       "customExportConditions": [
         "require",
         "react-native",
-        "react-native-livephoto-source"
+        "react-native-livephoto-kit-source"
       ]
     },
     "modulePathIgnorePatterns": [

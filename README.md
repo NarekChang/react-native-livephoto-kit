@@ -1,7 +1,7 @@
-# react-native-livephoto
+# react-native-livephoto-kit
 
-[![npm version](https://img.shields.io/npm/v/react-native-livephoto.svg)](https://www.npmjs.com/package/react-native-livephoto)
-[![npm downloads](https://img.shields.io/npm/dm/react-native-livephoto.svg)](https://www.npmjs.com/package/react-native-livephoto)
+[![npm version](https://img.shields.io/npm/v/react-native-livephoto-kit.svg)](https://www.npmjs.com/package/react-native-livephoto-kit)
+[![npm downloads](https://img.shields.io/npm/dm/react-native-livephoto-kit.svg)](https://www.npmjs.com/package/react-native-livephoto-kit)
 [![platform: iOS](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](#requirements)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/NarekChang/react-native-livephoto/actions/workflows/ci.yml/badge.svg)](https://github.com/NarekChang/react-native-livephoto/actions/workflows/ci.yml)
@@ -9,7 +9,7 @@
 Show, create and save Apple [Live Photos](https://support.apple.com/en-us/104966) in React Native. iOS only.
 
 ```tsx
-import { LivePhotoView, generateLivePhoto } from 'react-native-livephoto';
+import { LivePhotoView, generateLivePhoto } from 'react-native-livephoto-kit';
 
 const livePhoto = await generateLivePhoto({ videoUri, maxDuration: 3 });
 
@@ -39,7 +39,7 @@ On Android and web, `<LivePhotoView>` renders an empty `View` and the functions 
 ## Installation
 
 ```sh
-npm install react-native-livephoto
+npm install react-native-livephoto-kit
 cd ios && bundle exec pod install
 ```
 
@@ -64,7 +64,7 @@ Expo Go doesn't support custom native code, so use a [development build](https:/
 ```json
 {
   "expo": {
-    "plugins": ["react-native-livephoto"]
+    "plugins": ["react-native-livephoto-kit"]
   }
 }
 ```
@@ -73,7 +73,7 @@ The plugin adds `NSPhotoLibraryAddUsageDescription`. It accepts two options:
 
 ```json
 [
-  "react-native-livephoto",
+  "react-native-livephoto-kit",
   {
     "savePhotosPermission": "Save your Live Photos to the library.",
     "photosPermission": "Show Live Photos from your library."
@@ -94,7 +94,7 @@ import {
   LivePhotoView,
   saveLivePhotoToLibrary,
   useGenerateLivePhoto,
-} from 'react-native-livephoto';
+} from 'react-native-livephoto-kit';
 
 export function LivePhotoMaker({ videoUri }: { videoUri: string }) {
   const { generate, cancel, status, progress, result, error } =

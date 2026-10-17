@@ -1,4 +1,4 @@
-// Expo config plugin: `plugins: ["react-native-livephoto"]` in app.json.
+// Expo config plugin: `plugins: ["react-native-livephoto-kit"]` in app.json.
 //
 // It only sets `ios.infoPlist`, which Expo prebuild merges into Info.plist, so it needs no
 // dependency on @expo/config-plugins.
