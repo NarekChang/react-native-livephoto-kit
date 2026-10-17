@@ -1,34 +1,177 @@
 {
   "name": "react-native-livephoto",
-  "title": "React Native Livephoto",
-  "version": "1.0.0",
-  "description": "Apple LivePhotos are working only on IOS devices.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0",
+  "description": "Apple Live Photo view and utilities for React Native (iOS)",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "exports": {
+    ".": {
+      "react-native-livephoto-source": "./src/index.tsx",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NarekChang/react-native-livephoto.git",
-    "baseUrl": "https://github.com/NarekChang/react-native-livephoto"
+  "files": [
+    "src",
+    "lib",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "react-native.config.js",
+    "app.plugin.js",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "example": "npm run --workspace react-native-livephoto-example --",
+    "clean": "del-cli example/ios/build lib",
+    "prepare": "bob build",
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "test": "jest",
+    "release": "release-it --only-version",
+    "test:ios": "swift test"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "ios",
+    "live-photo",
+    "livephoto",
+    "photos",
+    "fabric",
+    "new-architecture",
+    "expo"
   ],
-  "author": {
-    "name": "Narek Changlyan",
-    "email": "narek.changlyan@gmail.com"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NarekChang/react-native-livephoto.git"
   },
+  "author": "Narek Changlyan <narek.changlyan@gmail.com> (https://github.com/NarekChang)",
   "license": "MIT",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
-  "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.59.0-rc.0 <1.0.x"
+  "bugs": {
+    "url": "https://github.com/NarekChang/react-native-livephoto/issues"
+  },
+  "homepage": "https://github.com/NarekChang/react-native-livephoto#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "react": "^16.8.3",
-    "react-native": "^0.59.10",
-    "react-native-fs": "^2.13.3"
+    "@commitlint/config-conventional": "^21.2.0",
+    "@eslint/compat": "^2.1.0",
+    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/js": "^9.39.5",
+    "@jest/globals": "^29.7.0",
+    "@react-native/babel-preset": "0.86.2",
+    "@react-native/eslint-config": "0.86.2",
+    "@react-native/jest-preset": "0.86.2",
+    "@release-it/conventional-changelog": "^12.0.0",
+    "@testing-library/react-native": "^14.1.0",
+    "@types/react": "^19.2.0",
+    "commitlint": "^21.2.1",
+    "del-cli": "^7.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-ft-flow": "^3.0.11",
+    "eslint-plugin-prettier": "^5.5.6",
+    "jest": "^29.7.0",
+    "lefthook": "^2.1.10",
+    "prettier": "^3.9.6",
+    "react": "19.2.3",
+    "react-native": "0.86.2",
+    "react-native-builder-bob": "^0.43.0",
+    "release-it": "^21.0.1",
+    "test-renderer": "^1.3.1",
+    "turbo": "^2.10.8",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": ">=0.80.0"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "npm@10.8.2",
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "codegenConfig": {
+    "name": "RNLivePhotoSpec",
+    "type": "all",
+    "jsSrcsDir": "src",
+    "ios": {
+      "components": {
+        "LivePhotoView": {
+          "className": "RNLivePhotoView"
+        }
+      },
+      "modulesProvider": {
+        "LivePhoto": "RNLivePhotoModule"
+      }
+    }
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "jest": {
+    "preset": "@react-native/jest-preset",
+    "testEnvironmentOptions": {
+      "customExportConditions": [
+        "require",
+        "react-native",
+        "react-native-livephoto-source"
+      ]
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "angular"
+        }
+      }
+    }
   }
 }
