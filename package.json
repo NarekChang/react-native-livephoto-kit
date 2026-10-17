@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NarekChang/react-native-livephoto.git"
+    "url": "git+https://github.com/NarekChang/react-native-livephoto-kit.git"
   },
   "author": "Narek Changlyan <narek.changlyan@gmail.com> (https://github.com/NarekChang)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NarekChang/react-native-livephoto/issues"
+    "url": "https://github.com/NarekChang/react-native-livephoto-kit/issues"
   },
-  "homepage": "https://github.com/NarekChang/react-native-livephoto#readme",
+  "homepage": "https://github.com/NarekChang/react-native-livephoto-kit#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/react-native-livephoto-kit.svg)](https://www.npmjs.com/package/react-native-livephoto-kit)
 [![platform: iOS](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](#requirements)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![CI](https://github.com/NarekChang/react-native-livephoto/actions/workflows/ci.yml/badge.svg)](https://github.com/NarekChang/react-native-livephoto/actions/workflows/ci.yml)
+[![CI](https://github.com/NarekChang/react-native-livephoto-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/NarekChang/react-native-livephoto-kit/actions/workflows/ci.yml)
 
 Show, create and save Apple [Live Photos](https://support.apple.com/en-us/104966) in React Native. iOS only.
 
@@ -286,8 +286,8 @@ The video and audio samples are copied as they are. `maxDuration` trims through 
 [`example/`](example/) generates a Live Photo from a bundled clip, picks one from the library, plays it and saves it.
 
 ```sh
-git clone https://github.com/NarekChang/react-native-livephoto.git
-cd react-native-livephoto
+git clone https://github.com/NarekChang/react-native-livephoto-kit.git
+cd react-native-livephoto-kit
 npm install
 npm run example ios
 ```
