@@ -220,9 +220,10 @@ enum LivePhotoGenerator {
     await withTaskCancellationHandler {
       await withTaskGroup(of: Void.self) { group in
         for (output, input) in pairs {
+          let pipe = SamplePipe(output: output, input: input)
           let onSample = input.mediaType == .video ? onVideoSample : nil
           group.addTask {
-            await copySamples(from: output, to: input, isCancelled: { cancellation.isSet() }, onSample: onSample)
+            await copySamples(through: pipe, isCancelled: { cancellation.isSet() }, onSample: onSample)
           }
         }
       }
@@ -249,17 +250,16 @@ enum LivePhotoGenerator {
   }
 
   private static func copySamples(
-    from output: AVAssetReaderOutput,
-    to input: AVAssetWriterInput,
+    through pipe: SamplePipe,
     isCancelled: @escaping @Sendable () -> Bool,
     onSample: (@Sendable (CMTime) -> Void)?
   ) async {
-    let queue = DispatchQueue(label: "react-native-livephoto-kit.writer.\(input.mediaType.rawValue)")
+    let queue = DispatchQueue(label: "react-native-livephoto-kit.writer.\(pipe.input.mediaType.rawValue)")
     await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
-      input.requestMediaDataWhenReady(on: queue) {
-        while input.isReadyForMoreMediaData {
-          guard !isCancelled(), let buffer = output.copyNextSampleBuffer(), input.append(buffer) else {
-            input.markAsFinished()
+      pipe.input.requestMediaDataWhenReady(on: queue) {
+        while pipe.input.isReadyForMoreMediaData {
+          guard !isCancelled(), let buffer = pipe.output.copyNextSampleBuffer(), pipe.input.append(buffer) else {
+            pipe.input.markAsFinished()
             continuation.resume()
             return
           }
@@ -338,5 +338,17 @@ final class CancellationFlag: @unchecked Sendable {
     lock.lock()
     defer { lock.unlock() }
     return value
+  }
+}
+
+/// A reader output and the writer input it feeds. After setup they are used only from the
+/// serial queue passed to requestMediaDataWhenReady, so passing them across tasks is safe.
+private final class SamplePipe: @unchecked Sendable {
+  let output: AVAssetReaderOutput
+  let input: AVAssetWriterInput
+
+  init(output: AVAssetReaderOutput, input: AVAssetWriterInput) {
+    self.output = output
+    self.input = input
   }
 }

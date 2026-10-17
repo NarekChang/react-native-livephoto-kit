@@ -28,9 +28,13 @@ static NSNumber *_Nullable RNNumberFromOptional(std::optional<double> value)
   // carry it so JS can match them; sending events nobody listens to is harmless.
   NSString *requestId = options.requestId();
   __weak RNLivePhotoModule *weakSelf = self;
-  void (^onProgress)(double) = requestId == nil ? nil : ^(double progress) {
-    [weakSelf emitOnGenerateProgress:@{@"requestId" : requestId, @"progress" : @(progress)}];
-  };
+  // Not a ternary: in Objective-C++ `nil` is nullptr, which has no common type with a block.
+  void (^onProgress)(double) = nil;
+  if (requestId != nil) {
+    onProgress = ^(double progress) {
+      [weakSelf emitOnGenerateProgress:@{@"requestId" : requestId, @"progress" : @(progress)}];
+    };
+  }
 
   [RNLivePhotoModuleImpl generateWithVideoUri:options.videoUri()
                                      photoUri:options.photoUri()
